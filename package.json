@@ -31,7 +31,7 @@
     "@angular/http": "^5.2.3",
     "@angular/platform-server": "^5.2.3",
     "@angular/router": "^5.2.3",
-    "bootstrap": "^4.0.0",
+    "bootstrap": "^4.0.0-alpha.6",
     "bootstrap-datepicker": "^1.7.1",
     "bootstrap-timepicker": "^0.5.2",
     "font-awesome": "^4.7.0",

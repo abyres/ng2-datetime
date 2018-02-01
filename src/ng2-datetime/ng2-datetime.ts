@@ -27,10 +27,8 @@ const CUSTOM_ACCESSOR = {
                        (keyup)="checkEmptyValue($event)" />
                 <div [hidden]="datepickerOptions.hideIcon || datepickerOptions === false"
                      (click)="showDatepicker()"
-                     class="input-group-append">
-                     <div class="input-group-text">
+                     class="input-group-addon">
                         <i [ngClass]="datepickerOptions.icon || 'fa fa-th'" aria-hidden="true"></i>
-                     </div>
                 </div>
             </div>
             <div [ngClass]="{ 'input-group': !timepickerOptions.hideIcon, 'bootstrap-timepicker timepicker': true }">
@@ -45,10 +43,8 @@ const CUSTOM_ACCESSOR = {
 		       (keyup)="checkEmptyValue($event)" />
 	       <div [hidden]="timepickerOptions.hideIcon || timepickerOptions === false" 
 		     (click)="showTimepicker()"
-                 class="input-group-append">
-                  <div class="input-group-text">
+                 class="input-group-addon">
                     <i [ngClass]="timepickerOptions.icon || 'fa fa-clock-o'" aria-hidden="true"></i>
-                  </div>
                 </div>
             </div>
             <button *ngIf="hasClearButton" type="button" (click)="clearModels()">Clear</button>

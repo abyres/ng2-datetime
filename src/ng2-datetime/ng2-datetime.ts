@@ -56,7 +56,8 @@ const CUSTOM_ACCESSOR = {
     `,
     styles: [
     '.ng2-datetime *[hidden] { display: none; }',
-    '.ng2-datetime > .input-group { margin-right: 5px;}'
+    '.ng2-datetime > .input-group { margin-right: 5px;}',
+    '.bootstrap-timepicker-widget table td:not(.separator){min-width:30px}'
     ]
 })
 

@@ -22,13 +22,16 @@ const CUSTOM_ACCESSOR = {
                        [attr.required]="required"
                        [attr.placeholder]="datepickerOptions.placeholder || 'Choose date'"
                        [attr.tabindex]="tabindex"
-                       [(ngModel)]="dateModel"
+		       [ngModel]="dateModel | date:'dd/MM/yy'"
+		       (ngModelChange)="dateModel = $event; log()"
                        (blur)="onTouched()"
                        (keyup)="checkEmptyValue($event)" />
                 <div [hidden]="datepickerOptions.hideIcon || datepickerOptions === false"
                      (click)="showDatepicker()"
-                     class="input-group-addon">
-                        <i [ngClass]="datepickerOptions.icon || 'fa fa-th'" aria-hidden="true"></i>
+                     class="input-group-append">
+                        <div class="input-group-text">
+                          <i [ngClass]="datepickerOptions.icon || 'fa fa-th'" aria-hidden="true"></i>
+                        </div>
                 </div>
             </div>
             <div [ngClass]="{ 'input-group': !timepickerOptions.hideIcon, 'bootstrap-timepicker timepicker': true }">
@@ -37,14 +40,17 @@ const CUSTOM_ACCESSOR = {
                        [attr.required]="required"
                        [attr.placeholder]="timepickerOptions.placeholder || 'Set time'"
                        [attr.tabindex]="tabindex"
-                       [(ngModel)]="timeModel"
+		       [ngModel]="timeModel"
+		       (ngModelChange)="timeModel = $event"
                        (focus)="showTimepicker()"
                        (blur)="onTouched()"
 		       (keyup)="checkEmptyValue($event)" />
 	       <div [hidden]="timepickerOptions.hideIcon || timepickerOptions === false" 
 		     (click)="showTimepicker()"
-                 class="input-group-addon">
-                    <i [ngClass]="timepickerOptions.icon || 'fa fa-clock-o'" aria-hidden="true"></i>
+                 class="input-group-append">
+                   <div class="input-group-text">
+                      <i [ngClass]="timepickerOptions.icon || 'fa fa-clock-o'" aria-hidden="true"></i>
+                   </div>
                 </div>
             </div>
             <button *ngIf="hasClearButton" type="button" (click)="clearModels()">Clear</button>
@@ -65,6 +71,11 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     @Input() readonly: boolean;
     @Input() required: boolean;
     @Input() tabindex: string;
+    @Input() dateFormat: string;
+
+    log() {
+        console.debug(this.dateModel)
+    }
 
     date: Date; // ngModel
     dateModel: string;

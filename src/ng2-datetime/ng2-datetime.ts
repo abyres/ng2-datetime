@@ -1,6 +1,6 @@
 import {
     Component, Input, HostListener, AfterViewInit, OnDestroy,
-    SimpleChanges, OnChanges, HostBinding, forwardRef
+    SimpleChanges, OnChanges, HostBinding, forwardRef, AfterContentInit
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ITimepickerEvent } from './ITimepickerEvent';
@@ -63,7 +63,7 @@ const CUSTOM_ACCESSOR = {
     ]
 })
 
-export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestroy, OnChanges {
+export class NKDatetime implements ControlValueAccessor, AfterContentInit, OnDestroy, OnChanges {
     @Input('timepicker') timepickerOptions: any = {};
     @Input('datepicker') datepickerOptions: any = {};
     @Input('hasClearButton') hasClearButton: boolean;
@@ -100,7 +100,7 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
         return this.tabindex === undefined ? '-1' : undefined;
     }
 
-    ngAfterViewInit() {
+    ngAfterContentInit() {
         setTimeout(() => {
             this.init();
         })
